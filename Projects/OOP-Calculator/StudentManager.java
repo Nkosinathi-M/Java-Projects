@@ -45,23 +45,22 @@ public class StudentManager
             switch (fieldChoice)
             {
                 case 1:
-                    studentToBeSearched.setStudentID(newValue);
-                    break;
-                case 2:
                     studentToBeSearched.setName(newValue);
                     break;
-                case 3:
+                case 2:
                     studentToBeSearched.setSurname(newValue);
                     break;
-                case 4:
+                case 3:
                     studentToBeSearched.setAge(Integer.parseInt(newValue));
                     break;
-                case 5:
+                case 4:
                     studentToBeSearched.setCourse(newValue);
                     break;
                 default:
                     System.out.println("Error! Updating Was Not Successful");
             }
+
+
         } else
         {
             System.out.println("No Student With Student ID " + studentID + " Exists!");
@@ -74,6 +73,7 @@ public class StudentManager
         if(studentFoundToBeDeleted != null)
         {
             studentList.remove(studentFoundToBeDeleted);
+            System.out.println("Student Deleted Successfully.");
         } else
         {
             System.out.println("No Student With Student ID " + studentID + " Exists!");

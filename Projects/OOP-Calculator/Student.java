@@ -4,6 +4,7 @@ import java.util.Scanner;
 public class Student
 {
     static Scanner sc = new Scanner(System.in); // Remove this from here
+
     private String studentID;
     private String name;
     private String surname;

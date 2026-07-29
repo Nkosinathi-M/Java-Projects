@@ -1,4 +1,3 @@
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class StudentManagement {
@@ -6,23 +5,7 @@ public class StudentManagement {
     public static void main(String[] args)
     {
         Scanner sc = new Scanner(System.in);
-
-        System.out.println("\n################## CAPTURING YOUR INFORMATION ##################");
-        System.out.print("Enter Student ID: ");
-        String studentID = sc.nextLine();
-
-        System.out.print("Enter Name: ");
-        String name = sc.nextLine();
-
-        System.out.print("Enter Surname: ");
-        String surname = sc.nextLine();
-
-        System.out.print("Enter Age: ");
-        int age = sc.nextInt();
-        sc.nextLine();
-
-        System.out.print("Enter Course: ");
-        String course = sc.nextLine();
+        StudentManager manager = new StudentManager();
 
         /**
          * MAIN MENU OPTIONS
@@ -42,30 +25,62 @@ public class StudentManagement {
             sc.nextLine();
             option = opt;
 
-            Student objStudent = new Student(studentID,name, surname, age, course);
-            StudentManager manager = new StudentManager();
-
             switch (option)
             {
                 case 1:
+
+                    System.out.println("\n################## CAPTURING YOUR INFORMATION ##################");
+                    System.out.print("Enter Student ID: ");
+                    String _studentID = sc.nextLine();
+
+                    System.out.print("Enter Name: ");
+                    String name = sc.nextLine();
+
+                    System.out.print("Enter Surname: ");
+                    String surname = sc.nextLine();
+
+                    System.out.print("Enter Age: ");
+                    int age = sc.nextInt();
+                    sc.nextLine();
+
+                    System.out.print("Enter Course: ");
+                    String course = sc.nextLine();
+
+                    Student objStudent = new Student(_studentID,name, surname, age, course);
                     manager.addStudent(objStudent);
                     break;
                 case 2:
                     manager.viewStudents();
                     break;
                 case 3:
-                    manager.searchStudent(studentID);
+                    System.out.print("Enter StudentID to search: ");
+                    String searchingStudent = sc.nextLine();
+                    if (!searchingStudent.isEmpty())
+                    {
+                        Student searchedStudent = manager.searchStudent(searchingStudent);
+                        if(searchedStudent != null)
+                        {
+                            System.out.println("Student Information");
+                            System.out.println("Name:       " + searchedStudent.getName());
+                            System.out.println("Surname:    " + searchedStudent.getSurname());
+                            System.out.println("Age:        " + searchedStudent.getAge());
+                            System.out.println("Course:     " + searchedStudent.getCourse());
+                        } else
+                        {
+                            System.out.println("Not Found");
+                        }
+                    }
                     break;
                 case 4:
                     System.out.println("Enter Student ID to be updated: ");
-                    String student_ID = sc.nextLine();
+                    String updateStudentID = sc.nextLine();
                     // Update Student Info Method in this line
 
-                    System.out.println("Choose Option To Be Updated: 1-5 ");
-                    System.out.println(" 1. Name");
-                    System.out.println(" 2. Surname ");
+                    System.out.println("Choose Option To Be Updated: 1-4 ");
+                    System.out.println(" 1. Name ");
+                    System.out.println(" 2. Surname");
                     System.out.println(" 3. Age");
-                    System.out.println(" 4. Course");
+                    System.out.println("4. Course");
 
                     System.out.print("Enter Option: ");
                     int fieldChoice = sc.nextInt();
@@ -74,24 +89,19 @@ public class StudentManagement {
                     System.out.print("Enter your new value: ");
                     String newValue = sc.nextLine();
 
-                    manager.updateStudentInfo(student_ID, fieldChoice, newValue);
+                    manager.updateStudentInfo(updateStudentID, fieldChoice, newValue);
+
+                    break;
+
+                case 5:
+                    System.out.print("Enter StudentID to Delete: ");
+                    String deleteStudentID = sc.nextLine();
+                    manager.deleteStudent(deleteStudentID);
                     break;
                 default:
-                    manager.deleteStudent(studentID);
+                    break;
             }
 
         } while (option != 6);
-
-
-
-
-//        System.out.println("\n*******STUDENT MANAGEMENT SYSTEM*******");
-//        System.out.println("Student ID:      " + objStudent.getStudentID());
-//        System.out.println("Name:            " + objStudent.getName());
-//        System.out.println("Surname:         " + objStudent.getSurname());
-//        System.out.println("Age:             " + objStudent.getAge());
-//        System.out.println("Course:          " + objStudent.getCourse());
-//        System.out.println();
-//        System.out.println("####################### END OF RESULTS #######################");
     }
 }
