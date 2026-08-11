@@ -1,35 +1,34 @@
 import java.util.ArrayList;
 
-public class StudentManager
-{
+public class StudentManager {
     private ArrayList<Student> studentList = new ArrayList<>();
 
-    public void addStudent(Student student)
-    {
-        studentList.add(student);
-        System.out.println("Student Added Successfully!");
+    public void addStudent(Student student) {
+        String newID = student.getStudentID();
+        Student foundStudent = searchStudent(newID);
+
+        if (foundStudent != null) {
+            System.out.println("Error! Student of Student ID " + foundStudent.getStudentID() + " already exists.");
+        } else {
+            studentList.add(student);
+            System.out.println("Student Added Successfully!");
+        }
+
     }
 
-    public void viewStudents()
-    {
-        if(studentList.isEmpty())
-        {
+    public void viewStudents() {
+        if (studentList.isEmpty()) {
             System.out.println("No Students Found!");
-        } else
-        {
-            for (Student s : studentList)
-            {
+        } else {
+            for (Student s : studentList) {
                 System.out.println(s.toString());
             }
         }
     }
 
-    public Student searchStudent(String studentID)
-    {
-        for(Student s : studentList)
-        {
-            if(s.getStudentID().equals(studentID))
-            {
+    public Student searchStudent(String studentID) {
+        for (Student s : studentList) {
+            if (s.getStudentID().equals(studentID)) {
                 return s;
             }
         }
@@ -37,13 +36,10 @@ public class StudentManager
         return null;
     }
 
-    public void updateStudentInfo(String studentID, int fieldChoice, String newValue)
-    {
+    public void updateStudentInfo(String studentID, int fieldChoice, String newValue) {
         Student studentToBeSearched = searchStudent(studentID);
-        if(studentToBeSearched != null)
-        {
-            switch (fieldChoice)
-            {
+        if (studentToBeSearched != null) {
+            switch (fieldChoice) {
                 case 1:
                     studentToBeSearched.setName(newValue);
                     break;
@@ -59,20 +55,16 @@ public class StudentManager
                 default:
                     System.out.println("Error! Updating Was Not Successful");
             }
-        } else
-        {
+        } else {
             System.out.println("No Student With Student ID " + studentID + " Exists!");
         }
     }
 
-    public void deleteStudent(String studentID)
-    {
+    public void deleteStudent(String studentID) {
         Student studentFoundToBeDeleted = searchStudent(studentID);
-        if(studentFoundToBeDeleted != null)
-        {
+        if (studentFoundToBeDeleted != null) {
             studentList.remove(studentFoundToBeDeleted);
-        } else
-        {
+        } else {
             System.out.println("No Student With Student ID " + studentID + " Exists!");
         }
 
