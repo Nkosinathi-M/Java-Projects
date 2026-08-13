@@ -2,8 +2,7 @@ import java.util.Scanner;
 
 public class StudentManagement {
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         StudentManager manager = new StudentManager();
 
@@ -25,8 +24,7 @@ public class StudentManagement {
             sc.nextLine();
             option = opt;
 
-            switch (option)
-            {
+            switch (option) {
                 case 1:
 
                     System.out.println("\n################## CAPTURING YOUR INFORMATION ##################");
@@ -39,24 +37,31 @@ public class StudentManagement {
                     System.out.print("Enter Surname: ");
                     String surname = sc.nextLine();
 
-                    System.out.print("Enter Age: ");
-                    int age = sc.nextInt();
-                    sc.nextLine();
+
+                    int age;
+
+                    do{
+                        System.out.print("Enter Age: ");
+                        age = sc.nextInt();
+                        sc.nextLine();
+ 
+                        if(age < 14 || age > 150)
+                        {
+                            System.out.println("Age Out Of Bound! \nEnter A Valid Age.");
+                        }
+                    } while (age < 14 || age > 150);
 
                     System.out.print("Enter Course: ");
                     String course = sc.nextLine();
-
-                    Student objStudent = new Student(_studentID,name, surname, age, course);
+ Student objStudent = new Student(_studentID,name, surname, age, course);
                     manager.addStudent(objStudent);
-                    break;
-                case 2:
+                    break;  
                     manager.viewStudents();
                     break;
                 case 3:
                     System.out.print("Enter StudentID to search: ");
                     String searchingStudent = sc.nextLine();
-                    if (!searchingStudent.isEmpty())
-                    {
+                    if (!searc 
                         Student searchedStudent = manager.searchStudent(searchingStudent);
                         if(searchedStudent != null)
                         {
