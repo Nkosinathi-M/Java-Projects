@@ -77,7 +77,7 @@ public class StudentManagement {
                     }
                     break;
                 case 4:
-                    System.out.println("Enter Student ID to be updated: ");
+                    System.out.print("Enter Student ID to be updated: ");
                     String updateStudentID = sc.nextLine();
                     // Update Student Info Method in this line
 
