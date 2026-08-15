@@ -1,9 +1,9 @@
 import java.util.Scanner;
 
 public class StudentManagement {
-
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+    static Scanner sc = new Scanner(System.in);   // Declaring scanner at class level
+    public static void main(String[] args)
+    {
         StudentManager manager = new StudentManager();
 
         /**
@@ -24,44 +24,40 @@ public class StudentManagement {
             sc.nextLine();
             option = opt;
 
-            switch (option) {
+            switch (option)
+            {
                 case 1:
-
                     System.out.println("\n################## CAPTURING YOUR INFORMATION ##################");
-                    System.out.print("Enter Student ID: ");
-                    String _studentID = sc.nextLine();
 
-                    System.out.print("Enter Name: ");
-                    String name = sc.nextLine();
-
-                    System.out.print("Enter Surname: ");
-                    String surname = sc.nextLine();
-
+                    String _studentID = readNonEmptyInput("Enter Student ID: ");
+                    String name = readNonEmptyInput("Enter Name: ");
+                    String surname = readNonEmptyInput("Enter Surname: ");
 
                     int age;
-
                     do{
                         System.out.print("Enter Age: ");
                         age = sc.nextInt();
                         sc.nextLine();
- 
+
                         if(age < 14 || age > 150)
                         {
                             System.out.println("Age Out Of Bound! \nEnter A Valid Age.");
                         }
                     } while (age < 14 || age > 150);
 
-                    System.out.print("Enter Course: ");
-                    String course = sc.nextLine();
- Student objStudent = new Student(_studentID,name, surname, age, course);
+                    String course = readNonEmptyInput("Enter Course: ");
+
+                    Student objStudent = new Student(_studentID,name, surname, age, course);
                     manager.addStudent(objStudent);
-                    break;  
+                    break;
+                case 2:
                     manager.viewStudents();
                     break;
                 case 3:
                     System.out.print("Enter StudentID to search: ");
                     String searchingStudent = sc.nextLine();
-                    if (!searc 
+                    if (!searchingStudent.isEmpty())
+                    {
                         Student searchedStudent = manager.searchStudent(searchingStudent);
                         if(searchedStudent != null)
                         {
@@ -106,7 +102,23 @@ public class StudentManagement {
                 default:
                     break;
             }
-
         } while (option != 6);
+    }
+
+    public static String readNonEmptyInput(String thePrompt){
+
+        String input;
+        do{
+            System.out.print(thePrompt);
+            input = sc.nextLine();
+
+            if(input.isEmpty())
+            {
+                System.out.println("This field cannot be blank. Please try again. ");
+            }
+
+        }while(input.isEmpty());
+
+        return input;
     }
 }
