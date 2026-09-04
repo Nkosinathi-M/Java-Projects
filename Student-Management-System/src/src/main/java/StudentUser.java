@@ -1,7 +1,6 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Student
+public class StudentUser extends User
 {
     static Scanner sc = new Scanner(System.in); // Remove this from here
     private String studentID;
@@ -10,8 +9,8 @@ public class Student
     private int age;
     private String course;
 
-    //public Student(){}
-    public Student(String studentID, String name, String surname, int age, String course)
+    //public StudentUser(){}
+    public StudentUser(String studentID, String name, String surname, int age, String course)
     {
         this.studentID = studentID;
         this.name = name;
@@ -64,9 +63,13 @@ public class Student
         return course;
     }
 
+    @Override
+    public void displayMenu(){}
 
     @Override
     public String toString() {
-        return "Student ID: " + studentID + "Name: " + name + "Surname: " + surname + "Age: " + age + "Course: " + course;
+        return "StudentUser ID: " + studentID + "Name: " + name + "Surname: " + surname + "Age: " + age + "Course: " + course;
     }
+
+
 }

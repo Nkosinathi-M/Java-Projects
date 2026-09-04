@@ -1,10 +1,10 @@
 import java.util.Scanner;
 
-public class StudentManagement {
+public class Main {
     static Scanner sc = new Scanner(System.in);   // Declaring scanner at class level
     public static void main(String[] args)
     {
-        StudentManager manager = new StudentManager();
+        AdminUser manager = new AdminUser();
 
         /**
          * MAIN MENU OPTIONS
@@ -12,7 +12,7 @@ public class StudentManagement {
         int option = 0;
         do {
             System.out.println("\n################## MAIN MENU: SMS ##################");
-            System.out.println("1. Add Student");
+            System.out.println("1. Add StudentUser");
             System.out.println("2. View All Students");
             System.out.println("3. Search student by ID");
             System.out.println("4. Update student details");
@@ -29,7 +29,7 @@ public class StudentManagement {
                 case 1:
                     System.out.println("\n################## CAPTURING YOUR INFORMATION ##################");
 
-                    String _studentID = readNonEmptyInput("Enter Student ID: ");
+                    String _studentID = readNonEmptyInput("Enter StudentUser ID: ");
                     String name = readNonEmptyInput("Enter Name: ");
                     String surname = readNonEmptyInput("Enter Surname: ");
 
@@ -47,8 +47,8 @@ public class StudentManagement {
 
                     String course = readNonEmptyInput("Enter Course: ");
 
-                    Student objStudent = new Student(_studentID,name, surname, age, course);
-                    manager.addStudent(objStudent);
+                    StudentUser objStudentUser = new StudentUser(_studentID,name, surname, age, course);
+                    manager.addStudent(objStudentUser);
                     break;
                 case 2:
                     manager.viewStudents();
@@ -58,14 +58,14 @@ public class StudentManagement {
                     String searchingStudent = sc.nextLine();
                     if (!searchingStudent.isEmpty())
                     {
-                        Student searchedStudent = manager.searchStudent(searchingStudent);
-                        if(searchedStudent != null)
+                        StudentUser searchedStudentUser = manager.searchStudent(searchingStudent);
+                        if(searchedStudentUser != null)
                         {
-                            System.out.println("Student Information");
-                            System.out.println("Name:       " + searchedStudent.getName());
-                            System.out.println("Surname:    " + searchedStudent.getSurname());
-                            System.out.println("Age:        " + searchedStudent.getAge());
-                            System.out.println("Course:     " + searchedStudent.getCourse());
+                            System.out.println("StudentUser Information");
+                            System.out.println("Name:       " + searchedStudentUser.getName());
+                            System.out.println("Surname:    " + searchedStudentUser.getSurname());
+                            System.out.println("Age:        " + searchedStudentUser.getAge());
+                            System.out.println("Course:     " + searchedStudentUser.getCourse());
                         } else
                         {
                             System.out.println("Not Found");
@@ -73,9 +73,9 @@ public class StudentManagement {
                     }
                     break;
                 case 4:
-                    System.out.print("Enter Student ID to be updated: ");
+                    System.out.print("Enter StudentUser ID to be updated: ");
                     String updateStudentID = sc.nextLine();
-                    // Update Student Info Method in this line
+                    // Update StudentUser Info Method in this line
 
                     System.out.println("Choose Option To Be Updated: 1-4 ");
                     System.out.println(" 1. Name ");
