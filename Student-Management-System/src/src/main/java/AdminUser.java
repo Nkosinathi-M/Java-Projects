@@ -1,75 +1,59 @@
-import java.util.ArrayList;
+
 
 public class AdminUser extends User{
-    private ArrayList<StudentUser> studentUserList = new ArrayList<>();
+    /**
+     * PRIVATE FIELD(S)
+     */
+    private String adminID;
 
-    public void addStudent(StudentUser studentUser) {
-        String newID = studentUser.getStudentID();
-        StudentUser foundStudentUser = searchStudent(newID);
-
-        if (foundStudentUser != null) {
-            System.out.println("Error! StudentUser of StudentUser ID " + foundStudentUser.getStudentID() + " already exists.");
-        } else {
-            studentUserList.add(studentUser);
-            System.out.println("StudentUser Added Successfully!");
-        }
-
+    /**
+     * CONSTRUCTORS
+     * @param name assigned to private fields
+     * @param surname assigned to private fields
+     * @param age assigned to private fields
+     * @param email assigned to private fields
+     * @param password assigned to private fields
+     * @param phoneNumber assigned to private fields
+     * @param adminID assigned to private fields
+     */
+    public AdminUser(String name, String surname, int age, String email, String password, String phoneNumber, String adminID) {
+        super(name, surname, age, email, password, phoneNumber);
+        this.adminID = adminID;
     }
 
-    public void viewStudents() {
-        if (studentUserList.isEmpty()) {
-            System.out.println("No Students Found!");
-        } else {
-            for (StudentUser s : studentUserList) {
-                System.out.println(s.toString());
-            }
-        }
+    /**
+     * GETTER AND SETTER
+     * 1. Below are getter and setter
+     * @return adminID
+     */
+    public String getAdminID() {
+        return adminID;
     }
 
-    public StudentUser searchStudent(String studentID) {
-        for (StudentUser s : studentUserList) {
-            if (s.getStudentID().equals(studentID)) {
-                return s;
-            }
-        }
-
-        return null;
+    public void setAdminID(String adminID) {
+        this.adminID = adminID;
     }
 
-    public void updateStudentInfo(String studentID, int fieldChoice, String newValue) {
-        StudentUser studentUserToBeSearched = searchStudent(studentID);
-        if (studentUserToBeSearched != null) {
-            switch (fieldChoice) {
-                case 1:
-                    studentUserToBeSearched.setName(newValue);
-                    break;
-                case 2:
-                    studentUserToBeSearched.setSurname(newValue);
-                    break;
-                case 3:
-                    studentUserToBeSearched.setAge(Integer.parseInt(newValue));
-                    break;
-                case 4:
-                    studentUserToBeSearched.setCourse(newValue);
-                    break;
-                default:
-                    System.out.println("Error! Updating Was Not Successful");
-            }
-        } else {
-            System.out.println("No StudentUser With StudentUser ID " + studentID + " Exists!");
-        }
-    }
-
-    public void deleteStudent(String studentID) {
-        StudentUser studentUserFoundToBeDeleted = searchStudent(studentID);
-        if (studentUserFoundToBeDeleted != null) {
-            studentUserList.remove(studentUserFoundToBeDeleted);
-        } else {
-            System.out.println("No StudentUser With StudentUser ID " + studentID + " Exists!");
-        }
+    /**
+     * METHOD: displayMenu()
+     * 1. We are overriding this method. It's from User class
+     */
+    @Override
+    public void displayMenu()
+    {
+        // We need to add the instructions here and modify
 
     }
 
     @Override
-    public void displayMenu(){}
+    public String toString() {
+        return "AdminUser{" +
+                "adminID= " + adminID + '\'' +
+                "Admin Name= " + getName() + '\'' +
+                "Admin Surname= " + getSurname() + '\'' +
+                "Admin Age= " + getAge() + '\'' +
+                "Admin Email= " + getEmail() + '\'' +
+                "Admin Phone Number= " + getPhoneNumber() + '\'' +
+                '}';
+    }
 }

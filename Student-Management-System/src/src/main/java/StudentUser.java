@@ -1,59 +1,44 @@
-import java.util.Scanner;
 
-public class StudentUser extends User
-{
-    static Scanner sc = new Scanner(System.in); // Remove this from here
+
+public class StudentUser extends User {
+
+    /**
+     * PRIVATE FIELDS
+     */
     private String studentID;
-    private String name;
-    private String surname;
-    private int age;
     private String course;
 
-    //public StudentUser(){}
-    public StudentUser(String studentID, String name, String surname, int age, String course)
+    /**
+     * CONSTRUCTORS
+     * @param name assigned to private fields
+     * @param surname assigned to private fields
+     * @param age assigned to private fields
+     * @param email assigned to private fields
+     * @param password assigned to private fields
+     * @param phoneNumber assigned to private fields
+     * @param studentID assigned to private fields
+     * @param course assigned to private fields
+     */
+    public StudentUser(String name, String surname, int age, String email, String password, String phoneNumber, String studentID, String course)
     {
+        super(name, surname, age, email, password, phoneNumber);
         this.studentID = studentID;
-        this.name = name;
-        this.surname = surname;
-        this.age = age;
         this.course = course;
     }
 
-    public void setStudentID(String studentID)
-    {
+
+    /**
+     * GETTERS AND SETTERS
+     * 1. Below are getter and setter for studentID, course
+     */
+    public void setStudentID(String studentID) {
         this.studentID = studentID;
     }
-    public String getStudentID()
-    {
+
+    public String getStudentID() {
         return studentID;
     }
 
-    public void setName(String name)
-    {
-        this.name = name;
-    }
-    public String getName()
-    {
-        return name;
-    }
-
-    public void setSurname(String surname)
-    {
-        this.surname = surname;
-    }
-    public String getSurname()
-    {
-        return surname;
-    }
-
-    public void setAge(int age)
-    {
-        this.age = age;
-    }
-    public int getAge()
-    {
-        return age;
-    }
 
     public void setCourse(String course) {
         this.course = course;
@@ -63,12 +48,18 @@ public class StudentUser extends User
         return course;
     }
 
+    /**
+     * METHOD: displayMenu()
+     * 1. We are overriding this method. It's from User class
+     */
     @Override
-    public void displayMenu(){}
+    public void displayMenu() {
+        // We need to add the instructions here
+    }
 
     @Override
     public String toString() {
-        return "StudentUser ID: " + studentID + "Name: " + name + "Surname: " + surname + "Age: " + age + "Course: " + course;
+        return "Student ID: " + studentID + ", Name: " + getName() + ", Surname: " + getSurname() + ", Age: " + getAge() + "Course: " + course;
     }
 
 

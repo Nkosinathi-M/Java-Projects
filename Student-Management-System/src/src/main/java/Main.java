@@ -4,7 +4,7 @@ public class Main {
     static Scanner sc = new Scanner(System.in);   // Declaring scanner at class level
     public static void main(String[] args)
     {
-        AdminUser manager = new AdminUser();
+        AdminUser manager = new AdminUser(); // Still to fix and correct here
 
         /**
          * MAIN MENU OPTIONS
