@@ -1,0 +1,57 @@
+.login-page{
+    display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+}
+
+#student-management__welcome-message{
+    margin-bottom: 20px;
+    font-weight: normal;
+}
+
+#form__div-login{
+    background-color: white;
+    width: 360px;
+    padding: 24px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+#form__login label{
+    display: block;
+    margin-bottom: 4px;
+    font-size: 14px;
+}
+
+#form__login input{
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+}
+
+#form__login button{
+    width: 100%;
+    padding: 10px;
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#form__login button:hover{
+    background: #1d4ed8;
+}
+
+#form__dic-login a{
+    display: block;
+    text-align: center;
+    margin-top: 12px;
+    color: var(--primary);
+    font-size: 14px;
+}
